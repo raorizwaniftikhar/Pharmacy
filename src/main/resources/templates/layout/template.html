@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="page"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <script th:src="@{/js/jquery-1.11.2.min.js}" type="application/javascript"></script>
+    <script th:src="@{/core/jquery.autocomplete.min.js}" type="application/javascript"></script>
+
+    <!-- CSS STYLE -->
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link th:href="@{/css/services-plugin/settings.css}" rel="stylesheet"/>
+
+    <!-- ANIMATE AND EASING LIBRARIES -->
+    <script th:src="@{/js/jquery.easing.1.3.js}" type="application/javascript"></script>
+    <script th:src="@{/js/jquery.cssAnimate.mini.js}" type="application/javascript"></script>
+
+    <!-- TOUCH AND MOUSE WHEEL SETTINGS -->
+    <script th:src="@{/js/jquery.touchwipe.min.js}" type="application/javascript"></script>
+    <script th:src="@{/js/jquery.mousewheel.min.js}" type="application/javascript"></script>
+
+    <!-- jQuery SERVICES Slider  -->
+    <script th:src="@{/js/jquery.themepunch.services.min.js}" type="application/javascript"></script>
+    <script th:src="@{/js/jquery.raty.min.js}" type="application/javascript"></script>
+
+    <!-- Modal Dialog -->
+    <script th:src="@{/js/jquery.simplemodal.1.4.4.min.js}" type="application/javascript"></script>
+
+    <!-- Pharmacy JS -->
+    <script th:src="@{/js/pharmacyJS.js}" type="application/javascript"></script>
+
+    <!-- FavIcons -->
+    <link rel="icon" type="image/png" th:href="@{/images/favicons/favicon-196x196.png}" sizes="196x196"/>
+    <link rel="icon" type="image/png" th:href="@{/images/favicons/favicon-128x128.png}" sizes="128x128"/>
+    <link rel="icon" type="image/png" th:href="@{/images/favicons/favicon-96x96.png}" sizes="96x96"/>
+    <link rel="icon" type="image/png" th:href="@{/images/favicons/favicon-32x32.png}" sizes="32x32"/>
+    <link rel="icon" type="image/png" th:href="@{/images/favicons/favicon-16x16.png}" sizes="16x16"/>
+
+    <!-- Bing -->
+    <meta name="msvalidate.01" content="67D9E63D948D694818FC9D5271404822" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "http://medizin-finder.de/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://medizin-finder.de/suche?parameter={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <title layout:title-pattern="$CONTENT_TITLE | $DECORATOR_TITLE">Medizin-Finder.de</title>
+
+</head>
+<body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-77117395-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<div th:replace="fragments/header :: header"></div>
+<div th:class="main-container">
+    <div th:include="this :: content" id="container"/>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+</html>

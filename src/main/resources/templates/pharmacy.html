@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/template">
+<head>
+    <title th:text="${pharmacy.displayName}"></title>
+</head>
+<body>
+<div th:fragment="content">
+    <div id="notification"></div>
+    <div id="content">
+        <h1>Apotheke: <span th:text="${pharmacy.displayName}"></span></h1>
+        <div class="box">
+            <div class="box-heading">Anschrift</div>
+            <div class="box-content">
+                <div class="box-product">
+                    <div style="padding: 10px 10px 10px 18px">
+                        <h3 style="margin: 0px;" th:text="${pharmacy.name}"></h3>
+                        <span th:text="${pharmacy.owner}">Name</span>
+                        <br />
+                        <span th:text="${pharmacy.street}">Street</span>
+                        <span th:text="${pharmacy.houseNumber}"></span>
+                        <br />
+                        <span th:text="${pharmacy.ZipCode}">POST Code</span>
+                        <span th:text="${pharmacy.city}">City</span>
+                        <br /><br />
+                        <span>Telefon: <span th:text="${pharmacy.phoneNumber}"></span></span>
+                        <br />
+                        <span>Telefax: <span th:text="${pharmacy.fax}"></span></span>
+                        <br />
+                        <span>E-Mail: <a th:href="'mailto:' + ${pharmacy.email}" th:text="${pharmacy.email}">E-Mail</a></span>
+                        <br />
+                        <span>Internet: <a th:href="${pharmacy.homePage}" th:text="${pharmacy.homePage}" target="_blank"></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-heading">Zahlungsarten / Versand</div>
+        <div class="box-content">
+            <div class="box-product">
+                <div style="padding: 10px 10px 10px 18px">
+                    <div>
+                        <h2>Zahlungsarten</h2>
+                        <hr/>
+                        <div th:each="payment : ${pharmacy.payments}">
+                            <div style="margin: 5px 0 5px 0;">
+                                <img th:src="@{/images/payment/} + ${payment.name} + '.png' " th:alt="${payment.name}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <h2>Versandkosten</h2>
+                        <hr/>
+                        Portofrei ab <span th:text="${#numbers.formatDecimal(pharmacy.freeShipping, 0, 'COMMA', 2, 'POINT')}"/> €.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-heading">Bewertungen</div>
+        <div class="box-content box-evaluation">
+            <div th:if="${evaluations.isEmpty()}"
+                 style="border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                Zurzeit gibt es keine Bewertungen.
+            </div>
+            <div th:each="evaluation : ${evaluations}" class="evaluation-box"
+                 style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                <span style="float: left" th:text="${T(com.pharmacy.web.helper.DateTimeConverter).convert(evaluation.creationDate)}"></span>
+                <span style="float: left">&nbsp; | &nbsp;</span>
+
+                <div th:id="${'current_evaluation_' + evaluation.id}"></div>
+
+                <h2 class="ellipsis" th:text="${evaluation.name}"></h2>
+
+                <div class="ellipsis" th:text="${evaluation.description}"></div>
+
+                <script th:inline="javascript">/*<![CDATA[*/
+                var prefix = [[${evaluation.id}]];
+                var id = '#current_evaluation_' + prefix;
+                jQuery(id).raty({
+                    readOnly: true,
+                    start: [[${evaluation.points}]],
+                    path: [[@{/images/raiting/}]]});
+
+                /*]]>*/</script>
+
+
+                <!--<script type="text/javascript">-->
+                <!--jQuery('#current_evaluation_${evaluation.id}').raty({-->
+                <!--readOnly: true,-->
+                <!--start: ${evaluation.points},-->
+                <!--path: 'resources/images/raiting/',-->
+                <!--showHalf: true-->
+                <!--});-->
+                <!--</script>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

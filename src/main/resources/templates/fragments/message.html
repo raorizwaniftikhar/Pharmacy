@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<!--th:if="${contactSuccessful} or ${passwordResetSuccessful}"-->
+<div id="info-dialog" class="info" th:fragment="message" th:if="${contactSuccessful} or ${passwordResetSuccessful}">
+    <div id="icon-x" class="icon-x" onclick="closeInfoDialog()"></div>
+    <strong>Hinweis</strong>
+    <br/>
+    <span th:if="${contactSuccessful}">Ihre Nachricht wurde erfolgreich versendet.</span>
+    <span th:if="${passwordResetSuccessful}">Ihr Password wurde erfolgreich zurückgesetzt.</span>
+    <!--<img id="icon-x" th:src="@{/images/x.png}" class="icon-x" onclick="closeInfoDialog()"/>-->
+</div>
+</body>
+</html>

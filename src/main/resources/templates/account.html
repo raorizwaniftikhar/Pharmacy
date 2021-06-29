@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/template">
+<head>
+    <title>Persönliche Daten</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div id="container">
+        <div id="notification"></div>
+        <div id="content">
+            <h1>Persönliche Daten</h1>
+
+            <div id="column-left">
+                <div class="box category">
+                    <div class="box-heading">Alle Kategorien</div>
+                    <div class="box-content">
+                        <div class="box-category">
+                            <ul>
+                                <li class="cat-header">
+                                    <a class="idCatSubcat" th:href="@{/benutzerkonto}">Persönliche Daten</a>
+                                </li>
+                                <li class="cat-header">
+                                    <a class="idCatSubcat" th:href="@{/bewertungen}">Meine Bewertungen</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box" style="margin-left: 250px">
+                <div class="box-heading">Persönliche Daten</div>
+                <div class="box-content">
+                    <div class="box-product">
+                        <div class="user-account">
+                            <form th:action="@{/benutzerkonto}" method="post" id="register" th:object="${userForm}">
+                                <h2>Persönliche Daten</h2>
+                                <div class="content">
+                                    <table class="form">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="required">*</span>
+                                                <span>Benutzername</span>
+                                            </td>
+                                            <td>
+                                                <input class="q1" name="login" type="text" th:field="*{login}" required="required"/>
+                                                <span th:if="${#fields.hasErrors('login')}" class="error"
+                                                      th:errors="*{login}">Bitte geben Sie Ihren Benutzername ein.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="required">*</span>
+                                                <span>Vorname</span>
+                                            </td>
+                                            <td>
+                                                <input class="q1" name="login" type="text" th:field="*{firstName}" required="required"/>
+                                                <span th:if="${#fields.hasErrors('firstName')}" class="error"
+                                                      th:errors="*{firstName}">Bitte geben Sie Ihren Vornamen ein.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="required">*</span>
+                                                <span>Nachname</span>
+                                            </td>
+                                            <td>
+                                                <input class="q1" name="login" type="text" th:field="*{lastName}" required="required"/>
+                                                <span th:if="${#fields.hasErrors('lastName')}" class="error"
+                                                      th:errors="*{lastName}">Bitte geben Sie Ihren Nachnamen ein.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="required">*</span>
+                                                <span>E-Mail</span>
+                                            </td>
+                                            <td>
+                                                <input class="q1" name="login" type="text" th:field="*{email}" required="required"/>
+                                                <span th:if="${#fields.hasErrors('email')}" class="error"
+                                                      th:errors="*{email}">Bitte geben Sie Ihre E-Mail-Adresse ein.</span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h2>Passwort</h2>
+
+                                <div class="content">
+                                    <table class="form">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="required">*</span>
+                                                <span>Password</span>
+                                            </td>
+                                            <td>
+                                                <input class="q1" name="password" type="password" th:field="*{password}" required="required" />
+                                                <span th:if="${#fields.hasErrors('password')}"
+                                                      th:errors="*{password}"
+                                                      class="error">Bitte geben Sie Ihre E-Mail-Adresse ein.</span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="buttons">
+                                    <div class="right">
+                                        <button class="button">
+                                            <span>Speichern</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
