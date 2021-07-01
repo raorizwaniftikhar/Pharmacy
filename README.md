@@ -1,4 +1,4 @@
-![](src/main/resources/static/images/logo1.png)
+
 
 # Frameworks
 * Spring Boot
