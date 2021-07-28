@@ -9,4 +9,6 @@
 # Database
 PostgreSQL
 
-DB-Name: adm
+DB-Name: Pharmacy
+Postgres Database.
+JINDI Datasource configuration
