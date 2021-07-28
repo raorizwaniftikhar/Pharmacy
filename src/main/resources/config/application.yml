@@ -69,11 +69,11 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 4d0d1e0cad915f2075e65279bbc20a952bfe11d7
     swagger:
-        title: adm API
-        description: adm API documentation
+        title: Pharmacy API
+        description: Pharmacy API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contact: raorizwaniftikhar@gmail.com
         license:
         licenseUrl:
 

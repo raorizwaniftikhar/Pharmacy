@@ -20,8 +20,8 @@ spring:
             enabled: false
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost:5432/adm
-        name: adm
+        url: jdbc:postgresql://localhost:5432/Pharmacy
+        name: Pharmacy
         username: postgres
         password: Admin123#
     jpa:
